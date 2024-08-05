@@ -1,0 +1,7 @@
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
+
+. "//wsl.localhost/Ubuntu/home/reynolds/.asdf/asdf.sh"
+
+. "//wsl.localhost/Ubuntu/home/reynolds/.asdf/completions/asdf.bash"
