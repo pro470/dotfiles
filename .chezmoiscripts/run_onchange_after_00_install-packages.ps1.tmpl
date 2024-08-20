@@ -1,0 +1,44 @@
+Set-StrictMode -Version 3.0
+$ErrorActionPreference = "Stop"
+
+#region Winget packages
+{{ $winget_list := (output "cmd" "/C" "winget export -o %TEMP%\\winget_list && type %TEMP%\\winget_list") -}}
+{{- range $pkgs := index .packages.windows.winget .profile }}
+  {{- range $category, $items := $pkgs }}
+    {{- range $item := $items }}
+{{   if not (contains . $winget_list) -}}
+        Write-Host Installing winget package '{{ $item}}'
+        winget install `
+          --scope user --exact --source {{$category}} --id {{ $item }} `
+          --accept-source-agreements `
+          --accept-package-agreements `
+          --silent `
+          --disable-interactivity
+{{   end }}
+    {{- end }}
+  {{- end}}
+{{ end }}
+#endregion
+
+#region Scoop packages
+{{ $scoop_list := (output "cmd" "/C" "scoop export") -}}
+{{- $bucketAppNames := dict -}}
+{{- range $index, $app := $scoop_list.apps -}}
+    {{- $bucketAppNames = set $bucketAppNames (printf "%s/%s" $app.Source $app.Name) true -}}
+{{- end -}}
+
+{{- range $pkgs := index .packages.windows.scoop .profile }}
+  {{- range $category, $items := $pkgs }}
+  {{   if not (contains . $scoop_list.buckets $category) -}}
+  scoop bucket add {{$category}}
+  {{- end -}}
+    {{- range $item := $items }}
+        {{- $bucketAppKey := printf "%s/%s" $category $item }}
+        {{   if not (get $bucketAppNames $bucketAppKey) -}}
+  scoop install {{ $bucketAppKey }}
+        {{- end}}
+      {{- end }}
+  {{- end }}
+{{ end }}
+#endregioni
+
