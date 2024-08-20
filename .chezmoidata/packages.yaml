@@ -7,7 +7,7 @@ packages:
 
   windows:
     scoop:
-      reyrey: 
+      reyrey:
 
         main:
           - 'aria2'
@@ -47,6 +47,7 @@ packages:
           - 'zig'
           - 'zoxide'
           - 'gh'
+          - 'oh-my-posh'
 
         extras:
           - 'firefox'
@@ -90,7 +91,12 @@ packages:
           - 'fancontrol'
           - 'notepadnext'
           - 'blender-launcher'
- 
+          - 'obs-studio'
+          - 'displaycal'
+          - 'localsend'
+          - 'whatsapp'
+
+
 
         versions:
           - 'ubisoftconnect'
@@ -105,4 +111,46 @@ packages:
           - 'epic-games-launcher'
           - 'steam'
           - 'legendary'
+
+        nonportable:
+          - 'gramarly-np'
+
+    winget:
+      reyrey:
+        winget:
+          - 'SurgeSynth.SurgeXT'
+          - 'CPUID.CPU-Z.MSI'
+          - 'Docker.DockerDesktop'
+          - 'FocusriteAudioEngineeringLtd.FocusriteControl2'
+          - 'HermannSchinagl.LinkShellExtension'
+          - 'Seelen.SeelenUI'
+          - 'NewTek.NDI5Runtime'
+          - 'Logitech.OptionsPlus'
+          - 'Corsair.iCUE.5'
+          - 'Nvidia.Broadcast'
+          - 'Microsoft.VisualStudio.2019.BuildTools'
+          - 'Microsoft.VisualStudio.2022.BuildTools'
+          - 'Microsoft.VisualStudio.2022.Community'
+          - 'Nvidia.VideoEffectsSDK.20xx-Turing'
+          - 'Microsoft.OneDrive'
+          - 'Canonical.Ubuntu.2204'
+          - 'kalilinux.kalilinux'
+          - 'Microsoft.AppInstaller'
+
+        msstore:
+
+          - '9NBLGGH516XP'
+          - '9N95Q1ZZPMH4'
+          - '9MVZQVXJBQ9V'
+          - '9NQ4QL59XLBF'
+          - '9N9WCLWDQS5J'
+          - '9NF8H0H7WMLT'
+          - '9NVMNJCR03XV'
+
+
+
+
+
+
+
 
