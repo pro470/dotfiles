@@ -1,0 +1,21 @@
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $profile := promptStringOnce . "profile" "enter profile" -}}
+
+
+
+[data]
+    email = {{ $email | quote }}
+    profile = {{ $profile }}
+
+[edit]
+    command = "nvim"
+
+[diff]
+    command = "meld"
+    args = ["--diff", "{{ .Destination }}", "{{ .Target }}"]
+    pager = "diff-so-fancy"
+
+
+[merge]
+    command = "nvim"
+    args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
