@@ -5,7 +5,6 @@ $ErrorActionPreference = "Stop"
 {{ $winget_list := (output "cmd" "/C" "winget export -o %TEMP%\\winget_list && type %TEMP%\\winget_list") -}}
 {{- range $pkgs := index .packages.windows.winget .profile }}
   {{- range $category, $items := $pkgs }}
-    {{- range $item := $items }}
 {{   if not (contains . $winget_list) -}}
         Write-Host Installing winget package '{{ $item}}'
         winget install `
@@ -16,7 +15,6 @@ $ErrorActionPreference = "Stop"
           --disable-interactivity
 {{   end }}
     {{- end }}
-  {{- end}}
 {{ end }}
 #endregion
 
