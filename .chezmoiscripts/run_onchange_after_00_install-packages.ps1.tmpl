@@ -5,7 +5,7 @@ $ErrorActionPreference = "Stop"
 {{ $winget_list := (output "cmd" "/C" "winget export -o %TEMP%\\winget_list && type %TEMP%\\winget_list") -}}
 {{- range $pkgs := index .packages.windows.winget .profile }}
   {{- range $category, $item := $pkgs }}
-{{   if not (contains . $winget_list) -}}
+{{   if not (contains $item $winget_list) -}}
         Write-Host Installing winget package '{{ $item}}'
         winget install `
           --scope user --exact --source {{$category}} --id {{ $item }} `
@@ -28,7 +28,7 @@ $ErrorActionPreference = "Stop"
 
 {{- range $pkgs := index .packages.windows.scoop .profile }}
   {{- range $category, $items := $pkgs }}
-  {{   if not (contains . $scoop_list.buckets $category) -}}
+  {{   if not (contains  $category $scoop_list.buckets ) -}}
   scoop bucket add {{$category}}
   {{- end -}}
     {{- range $item := $items }}
