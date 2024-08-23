@@ -20,6 +20,7 @@ $ErrorActionPreference = "Stop"
 
 #region Scoop packages
 {{ $scoop_list := (output "cmd" "/C" "scoop export") -}}
+{{$scoop_list := (fromJson $scoop_list) -}}
 {{- $bucketAppNames := dict -}}
 {{- range $index, $app := $scoop_list.apps -}}
     {{- $bucketAppNames = set $bucketAppNames (printf "%s/%s" $app.Source $app.Name) true -}}
