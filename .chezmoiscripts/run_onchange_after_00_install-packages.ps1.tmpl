@@ -26,8 +26,8 @@ $ErrorActionPreference = "Stop"
     {{- $bucketAppNames = set $bucketAppNames (printf "%s/%s" $app.Source $app.Name) true -}}
 {{- end -}}
 
-{{- range $pkgs := index .packages.windows.scoop .profile }}
-  {{- range $category, $items := $pkgs }}
+{{- range $category,$pkgs := index .packages.windows.scoop .profile }}
+  {{- range  $items := $pkgs }}
   {{   if not (contains  $category $scoop_list.buckets ) -}}
   scoop bucket add {{$category}}
   {{- end -}}
