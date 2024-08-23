@@ -28,7 +28,7 @@ $ErrorActionPreference = "Stop"
 
 {{- range $category,$pkgs := index .packages.windows.scoop .profile }}
   {{- range  $items := $pkgs }}
-  {{   if not (contains  $category $scoop_list.buckets ) -}}
+  {{   if not (contains  $category (printf "%s"   $scoop_list.buckets )) -}}
   scoop bucket add {{$category}}
   {{- end -}}
     {{- range $item := $items }}
