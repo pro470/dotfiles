@@ -27,11 +27,11 @@ $ErrorActionPreference = "Stop"
 {{- end -}}
 
 {{- range $category,$pkgs := index .packages.windows.scoop .profile }}
-  {{- range  $item  := $pkgs }}
   {{   if not (contains  $category (printf "%s"   $scoop_list.buckets )) -}}
   scoop bucket add {{$category}}
   {{- end -}}
-        {{- $bucketAppKey := printf "%s/%s" $category $item }}
+  {{- range  $item  := $pkgs }}
+       {{- $bucketAppKey := printf "%s/%s" $category $item }}
         {{   if not (get $bucketAppNames $bucketAppKey) -}}
   scoop install {{ $bucketAppKey }}
       {{- end }}
