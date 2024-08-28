@@ -4,11 +4,11 @@ $ErrorActionPreference = "Stop"
 #region Winget packages
 {{ $winget_list := (output "cmd" "/C" "winget export -o %TEMP%\\winget_list && type %TEMP%\\winget_list") -}}
 {{- range $pkgs := index .packages.windows.winget .profile }}
-  {{- range $category, $item := $pkgs }}
+  {{- range $item := $pkgs }}
 {{   if not (contains $item $winget_list) -}}
         Write-Host Installing winget package '{{ $item}}'
         winget install `
-          --scope user --exact --source {{$category}} --id {{ $item }} `
+          --scope user --exact --source {{$pkgs}} --id {{ $item }} `
           --accept-source-agreements `
           --accept-package-agreements `
           --silent `
