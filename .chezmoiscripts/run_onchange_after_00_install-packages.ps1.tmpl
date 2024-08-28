@@ -8,7 +8,7 @@ $ErrorActionPreference = "Stop"
 {{   if not (contains $item $winget_list) -}}
         Write-Host Installing winget package '{{ $item}}'
         winget install `
-          --scope user --exact --source {{ $s }} --id {{ $item }} `
+          --exact --source {{ $s }} --id {{ $item }} `
           --accept-source-agreements `
           --accept-package-agreements `
           --silent `
