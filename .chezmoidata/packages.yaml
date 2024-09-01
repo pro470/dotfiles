@@ -115,6 +115,18 @@ packages:
         nonportable:
           - 'gramarly-np'
 
+        nerd-fonts:
+          - 'FiraCode-NF-Mono'
+          - 'FiraCode-NF'
+          - 'FiraCode-NF-Propo'
+          - 'FiraMono-NF'
+          - 'JetBrainsMono-NF'
+          - 'JetBrainsMono-NF-Mono'
+          - 'JetBrainsMono-NF-Propo'
+          - 'JetBrains-Mono'
+          - 'Lato'
+
+
     winget:
       reyrey:
         winget:
