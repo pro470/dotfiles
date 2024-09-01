@@ -1,0 +1,13 @@
+repo:
+  git: 
+    reyrey:
+      - "https://github.com/jtroo/kanata.git"
+      - "https://github.com/Cynosphere/komoband.git"
+      - "https://github.com/pro470/Flow.Launcher.Plugin.komoflow.git"
+      - "https://github.com/eythaann/Seelen-UI.git"
+      - "https://github.com/glzr-io/zebar.git"
+      - "https://github.com/LGUG2Z/komorebi.git"
+      - "https://github.com/pro470/komorebi.git"
+      - "https://github.com/codyduong/hitokage.git"
+      - "https://github.com/amnweb/yasb.git"
+      - "https://github.com/pro470/wezterm-config.git"

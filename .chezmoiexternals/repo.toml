@@ -1,0 +1,13 @@
+[".vim_runtime"]
+  type = "git-repo"
+  url = "https://github.com/amix/vimrc.git"
+  clone.args = ["--depth=1"]
+
+[".intellimacs"]
+  type = "git-repo"
+  url = "https://github.com/MarcoIeni/intellimacs.git"
+
+[.config/wezterm]
+  type = "git-repo"
+  url = "https://github.com/pro470/wezterm-config.git"
+
