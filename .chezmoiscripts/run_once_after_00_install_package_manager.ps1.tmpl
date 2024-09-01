@@ -1,0 +1,21 @@
+Set-StrictMode -Version 3.0
+$ErrorActionPreference = "Stop"
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Scoop package manager installer region 
+
+irm get.scoop.sh -outfile 'install.ps1'
+
+.\install.ps1  > install.log
+
+# Check if the Scoop installation was successful
+if ($LASTEXITCODE -eq 0) {
+    Write-Output "Scoop installation was successful."
+} else {
+    Write-Output "Scoop installation failed with exit code $LASTEXITCODE."
+}
+
+# end Scoop package manager installer region
+
+

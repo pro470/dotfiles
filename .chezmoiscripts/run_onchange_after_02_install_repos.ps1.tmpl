@@ -1,0 +1,18 @@
+Set-StrictMode -Version 3.0
+$ErrorActionPreference = "Stop"
+
+# git repos installation region
+mkdir $home/repos
+
+cd $home/repos
+
+{{- range $repo := index .repos.git   .profile }}
+
+  git clone $repo
+
+{{ end }}
+
+cd $home
+# end git repos installation region
+
+
