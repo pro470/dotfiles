@@ -19,13 +19,13 @@
 
 ["unmanaged_executable/Spacedrive-windows-x86_64.msi"]
   type = "file"
-  url = "https://github.com/spacedriveapp/spacedrive/releases/download/{{-(output curl --silent "https://api.github.com/repos/spacedriveapp/spacedrive/releases/latest" | jq -r '.tag_name')-}}/Spacedrive-windows-x86_64.msi"
+  url = "https://github.com/spacedriveapp/spacedrive/releases/download/{{(output "cmd" "/C" "curl --silent 'https://api.github.com/repos/spacedriveapp/spacedrive/releases/latest' | jq -r '.tag_name')"}}/Spacedrive-windows-x86_64.msi"
   executable = true
   refreshPeriod = "24"
 
 ["unmanaged_executable/windows_cursor"]
   type = "archive"
-  url = "https://github.com/ful1e5/Bibata_Cursor/releases/download/{{-(output curl --silent "https://api.github.com/repos/ful1e5/Bibata_Cursor/releases/latest" | jq -r '.tag_name')-}}/Bibata-Modern-Classic-Windows.zip"
+  url = "https://github.com/ful1e5/Bibata_Cursor/releases/download/{{(output "cmd" "/C" "curl --silent 'https://api.github.com/repos/ful1e5/Bibata_Cursor/releases/latest' | jq -r '.tag_name')"}}/Bibata-Modern-Classic-Windows.zip"
   refreshPeriod = "24"
 
 
