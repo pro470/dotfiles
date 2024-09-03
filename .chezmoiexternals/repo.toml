@@ -28,3 +28,4 @@
   url = "https://github.com/ful1e5/Bibata_Cursor/releases/download/{{-(output curl --silent "https://api.github.com/repos/ful1e5/Bibata_Cursor/releases/latest" | jq -r '.tag_name')-}}/Bibata-Modern-Classic-Windows.zip"
   refreshPeriod = "24"
 
+

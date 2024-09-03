@@ -1,0 +1,39 @@
+
+# Define the path to the unmanaged_executable directory
+$directoryPath = "C:\Path\To\unmanaged_executable"
+
+# Check if the directory exists
+if (Test-Path -Path $directoryPath) {
+    # Get all .exe, .msi, and .appinstaller files in the directory and its subdirectories
+    $executables = Get-ChildItem -Path $directoryPath -Recurse -Include *.exe, *.msi, *.appinstaller -File
+
+    # Get all .inf files in the directory and its subdirectories
+    $infFiles = Get-ChildItem -Path $directoryPath -Recurse -Include *.inf -File
+
+    # Iterate through each executable file and execute it
+    foreach ($file in $executables) {
+        try {
+            Write-Output "Executing $($file.FullName)"
+            # Start the process for each executable file
+            Start-Process -FilePath $file.FullName -Wait -NoNewWindow
+        }
+        catch {
+            Write-Output "Error executing $($file.FullName): $_"
+        }
+    }
+
+    # Iterate through each .inf file and run it using RUNDLL32.EXE
+    foreach ($infFile in $infFiles) {
+        try {
+            Write-Output "Installing INF file: $($infFile.FullName)"
+            # Run the INF file using RUNDLL32.EXE
+            Start-Process -FilePath "RUNDLL32.EXE" -ArgumentList "SETUPAPI.DLL,InstallHinfSection DefaultInstall 132 `"$($infFile.FullName)`"" -Wait -NoNewWindow
+        }
+        catch {
+            Write-Output "Error installing INF file: $($infFile.FullName): $_"
+        }
+    }
+} else {
+    Write-Output "Directory $directoryPath does not exist."
+}
+
