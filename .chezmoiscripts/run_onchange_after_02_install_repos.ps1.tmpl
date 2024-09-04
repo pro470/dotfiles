@@ -6,7 +6,7 @@ mkdir $home/repos
 
 cd $home/repos
 
-{{- range $repo := index .repos.git reyrey }}
+{{- range $repo := index .repos.git.reyrey }}
 
   git clone $repo
 
