@@ -15,17 +15,17 @@
   type = "file"
   url = "https://github.com/zen-browser/desktop/releases/download/{{( output "pwsh" "-Command"  "curl --silent 'https://api.github.com/repos/zen-browser/desktop/releases/latest' | jq -r '.tag_name'" | trim )}}/zen.installer.exe"
   executable = true
-  refreshPeriod = "24"
+  refreshPeriod = "24h"
 
 ["unmanaged_executable/Spacedrive-windows-x86_64.msi"]
   type = "file"
   url = "https://github.com/spacedriveapp/spacedrive/releases/download/{{( output "pwsh" "-Command"  "curl --silent 'https://api.github.com/repos/spacedriveapp/spacedrive/releases/latest' | jq -r '.tag_name'" | trim )}}/Spacedrive-windows-x86_64.msi"
   executable = true
-  refreshPeriod = "24"
+  refreshPeriod = "24h"
 
 ["unmanaged_executable/windows_cursor"]
   type = "archive"
   url = "https://github.com/ful1e5/Bibata_Cursor/releases/download/{{ (output "pwsh" "-Command"  "curl --silent 'https://api.github.com/repos/ful1e5/Bibata_Cursor/releases/latest' | jq -r '.tag_name'" | trim )}}/Bibata-Modern-Classic-Windows.zip"
-  refreshPeriod = "24"
+  refreshPeriod = "24h"
 
 
