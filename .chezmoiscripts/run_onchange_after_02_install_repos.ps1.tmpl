@@ -2,13 +2,15 @@ Set-StrictMode -Version 3.0
 $ErrorActionPreference = "Stop"
 
 # git repos installation region
-mkdir $home/repos
+if (-not(Test-Path -Path $directoryPath)) {
+    mkdir $home/repos  
+}  
 
 cd $home/repos
 
 {{- range $repo := index .repos.git.reyrey }}
 
-  git clone $repo
+  git clone {{$repo -}}
 
 {{ end }}
 
