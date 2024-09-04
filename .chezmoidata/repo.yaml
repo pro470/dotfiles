@@ -1,5 +1,5 @@
 repos:
-  git: 
+  git:
     reyrey:
       - "https://github.com/jtroo/kanata.git"
       - "https://github.com/Cynosphere/komoband.git"
