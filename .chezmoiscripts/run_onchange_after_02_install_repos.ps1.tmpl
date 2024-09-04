@@ -1,6 +1,8 @@
 Set-StrictMode -Version 3.0
 $ErrorActionPreference = "Stop"
 
+$directoryPath = "$home/repo"
+
 # git repos installation region
 if (-not(Test-Path -Path $directoryPath)) {
     mkdir $home/repos  
