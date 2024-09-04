@@ -1,4 +1,4 @@
-repo:
+repos:
   git: 
     reyrey:
       - "https://github.com/jtroo/kanata.git"
