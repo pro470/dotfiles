@@ -1,7 +1,17 @@
-#!/bin/sh
 
-if [ ! -f "/c/Users/reyno/.config/chezmoi/key.txt" ]; then
-    mkdir -p "/c/Users/reyno/.config/chezmoi"
-    chezmoi age decrypt --output "/c/Users/reyno/.config/chezmoi/key.txt" --passphrase "{{ .chezmoi.sourceDir }}/key.txt.age"
-    chmod 600 "/c/Users/reyno/.config/chezmoi/key.txt"
-fi
+$keyFilePath = "$HOME\.config\chezmoi\key.txt"
+$sourceFilePath = "{{ .chezmoi.sourceDir }}\key.txt.age"
+
+if (-Not (Test-Path -Path $keyFilePath)) {
+    New-Item -Path "$HOME\.config\chezmoi" -ItemType Directory -Force
+    
+    chezmoi age decrypt --output $keyFilePath --passphrase $sourceFilePath
+    
+    $acl = Get-Acl -Path $keyFilePath
+    $acl.SetAccessRuleProtection($True, $False)
+    $rule = New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone", "FullControl", "Allow")
+    $acl.RemoveAccessRule($rule)
+    $ownerRule = New-Object System.Security.AccessControl.FileSystemAccessRule("$env:UserName", "FullControl", "Allow")
+    $acl.AddAccessRule($ownerRule)
+    Set-Acl -Path $keyFilePath -AclObject $acl
+}
